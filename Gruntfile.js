@@ -32,11 +32,13 @@ module.exports = function(grunt){
 
     copy: {
       lib: {
-        expand: true,
-        dot: true,
-        cwd: '<%= config.libdev %>',
-        dest: '<%= config.libdist %>',
-        src:'{,*/}*.{css,jpg,png,gif}'
+        files: [{
+          expand: true,
+          dot: true,
+          cwd: '<%= config.libdev %>',
+          src:'{,*/}*.{jpg,png,gif,webp}',
+          dest: '<%= config.libdist %>'
+        }]
       }
     },
 
@@ -134,8 +136,7 @@ module.exports = function(grunt){
       'sass:lib',
       'autoprefixer',
       'cssmin:lib',
-      'uglify:lib',
-      'copy:lib'
+      'uglify:lib'
     ]);
   grunt.registerTask('serve',[
     'build',
